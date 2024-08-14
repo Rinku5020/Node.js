@@ -62,6 +62,62 @@ app.patch("/editproduct/:id", (req, res) => {
     }
   })
 })
+// delete method
+
+app.delete("/deleteproduct/:id",(req,res)=>{
+  const {id}=req.params;
+  fs.readFile("./db.json","utf-8",(err,data)=>
+  {
+    if(err){
+      res.send(err)
+    }else
+    {
+
+      const productData=JSON.parse(data);
+      const newarrey=productData.filter((el,index)=>el.id!=id)
+      fs.writeFile("./db.json",JSON.stringify(newarrey),(err)=>{
+        if(err)
+        {
+          res.send(err)
+        }else
+        {
+          res.send("data delete successfully")
+        }
+      });
+
+    }
+  })
+})
+
+// put Method
+
+
+app.put("/updatedata/:id", (req, res) => {
+  const { id } = req.params;
+  fs.readFile("./db.json", "utf-8", (err, data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      const productData = JSON.parse(data)
+      const index = productData.findIndex((el) => el.id == id)
+      if (index != -1) {
+        productData[index] = { ...id, ...req.body };
+        fs.writeFile("./db.json", JSON.stringify(productData), (err) => {
+          if (err) {
+            res.send(err)
+          }
+          else {
+            res.send("data Edit succesfully")
+          }
+        })
+      } else {
+        res.send("data is not Found")
+      }
+    }
+  })
+})
+
+
 app.listen(8080, () => {
   console.log("Running on port 8080");
 });

@@ -7,7 +7,7 @@ function Products() {
     const [loading, setLoading] = useState(true);
     const [editingProductId, setEditingProductId] = useState(null);
     const [newPrice, setNewPrice] = useState('');
-
+    // get 
     const fetchProducts = () => {
         axios.get("http://localhost:8080/product")
             .then((res) => {
@@ -20,7 +20,7 @@ function Products() {
                 setLoading(false);
             });
     };
-
+    // Patch method
     const handleEdit = (id, currentPrice) => {
         setEditingProductId(id);
         setNewPrice(currentPrice);
@@ -35,7 +35,6 @@ function Products() {
             .then((res) => {
                 alert("Price updated successfully.");
                 console.log(res)
-                // Update the local state with the new price
                 setData(data.map(product =>
                     product.id === editingProductId ? { ...product, price: newPrice } : product
 
@@ -52,10 +51,21 @@ function Products() {
 
     useEffect(() => {
         fetchProducts();
-    }, []);
+    }, [data]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading data</p>;
+    // delete method
+    const handledelete = (id) => {
+
+        axios.delete(`http://localhost:8080/deleteproduct/${id}`)
+            .then(res => {
+                console.log('Data deleted:', res.data)
+                alert("Data is Deleted")
+            })
+            .catch(error => console.error('Error deleting data:', error));
+
+    }
 
     return (
         <div style={{
@@ -84,6 +94,8 @@ function Products() {
                     ) : (
                         <button onClick={() => handleEdit(el.id, el.price)}>Edit Price</button>
                     )}
+
+                    <button onClick={() => handledelete(el.id)}>Delete</button>
                 </div>
             ))}
         </div>

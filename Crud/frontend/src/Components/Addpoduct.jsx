@@ -7,6 +7,7 @@ const initialstate={
     price:'',
     description:''
 }
+// post Method
 function Addpoduct() {
     const [formData,setFormData]=useState(initialstate)
     const {image,category,price,description,title}=formData
