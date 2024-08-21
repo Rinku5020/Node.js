@@ -94,7 +94,7 @@ function Products() {
                     ) : (
                         <button onClick={() => handleEdit(el.id, el.price)}>Edit Price</button>
                     )}
-
+                    <br /><br />
                     <button onClick={() => handledelete(el.id)}>Delete</button>
                 </div>
             ))}

@@ -4,7 +4,7 @@ const fs = require("fs")
 const app = express()
 app.use(express.json())
 app.use(cors())
-let lastID=3
+let lastID=1
 // get method
 app.get("/product", (req, res) => {
   fs.readFile("./db.json", "utf-8", (err, data) => {

@@ -28,7 +28,7 @@ function Addpoduct() {
     }
   return (
     <div>
-    <h2>Post Data</h2>
+    <h2>POST DATA</h2>
       <form onSubmit={handleSubmit}>
         <input name='image' value={image} onChange={handleChnage} type="text" placeholder='image' /> <br /><br />
         <input  name='title' value={title} onChange={handleChnage} type="text" placeholder='Title' /><br /><br />
