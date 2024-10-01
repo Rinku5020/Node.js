@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+<h2>Our Products</h2>
+
+<!-- Product Submission Form -->
+<h3>Add a New Product</h3>
+<form action="/products" method="POST">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    
+    <label>Price:</label>
+    <input type="number" name="price" required>
+    
+    <label>Description:</label>
+    <textarea name="description" required></textarea>
+    
+    <label>Image URL:</label>
+    <input type="text" name="imageUrl" required>
+    
+    <button type="submit">Add Product</button>
+</form>
+
+<!-- Show Existing Products -->
+<h3>Existing Products</h3>
+<ul>
+    <% products.forEach(product => { %>
+        <li>
+            <h3><%= product.name %></h3>
+            <p><%= product.description %></p>
+            <p>Price: $<%= product.price %></p>
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" style="max-width: 100px;">
+        </li>
+    <% }) %>
+</ul>
+
+<%- include('partials/footer') %>
+
+<!-- Alert for Success -->
+<% if (successMessage) { %>
+    <script>
+        alert("<%= successMessage %>");
+    </script>
+<% } %>
