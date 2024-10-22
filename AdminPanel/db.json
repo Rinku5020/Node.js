@@ -1,0 +1,56 @@
+{
+    "heroes": [
+        {
+            "id": 1,
+            "name": "IronMan",
+            "powers": [
+                "robot",
+                "money"
+            ],
+            "health": 33,
+            "villains": [
+                {
+                    "name": "Mandarin",
+                    "health": 50
+                }
+            ]
+        },
+        {
+            "name": "Captain Marvel",
+            "powers": [
+                "superhuman strength",
+                "energy projection",
+                "flight"
+            ],
+            "health": 95,
+            "villains": [
+                {
+                    "name": "Yon-Rog",
+                    "health": 60
+                }
+            ],
+            "id": 2
+        },
+        {
+            "name": "Captain Marvel",
+            "powers": [
+                "superhuman strength",
+                "energy projection",
+                "flight"
+            ],
+            "health": 95,
+            "villains": [
+                {
+                    "name": "Yon-Rog",
+                    "health": 60
+                }
+            ],
+            "id": 3
+        },
+        {
+            "name": "Thanos",
+            "health": 100,
+            "id": 4
+        }
+    ]
+}
